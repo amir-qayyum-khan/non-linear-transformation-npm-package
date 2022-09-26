@@ -1,7 +1,7 @@
 {
   "name": "non-linear-transformation",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.3",
+  "description": "There is a helping method for graphs name transformDataToNonLinearList. \nThis method can transform a random numeric axis data of a graphs into \nnonlinear axis data set. \n\n**Dependencies:**\n- lodash: https://lodash.com/docs/4.17.15 \n- set-clustering: https://www.npmjs.com/package/set-clustering\n\nLodash is a modern JavaScript utility library delivering modularity, performance & extras.\nWe are using its methods like [cloneDeep, uniq, isUndefined, isNull, isNaN]\n\nSet Clustering is a tool for grouping objects based on similarity.\nGive an array of arbitrary elements, and a function to determine how similar two elements are.\nThe elements can then be divided into a number of groups to your liking.\nThe elements in each group will be more similar to each other than to elements of other groups.\n\n**DRY Run:**\nSee script.js file to precomputed sample output and a sample run function.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
