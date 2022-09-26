@@ -37,7 +37,6 @@
  * output Y-axis: [0, 25, 28, 31, 43, 45, 46, 47, 49, 55]
  */
 
-console.log(require("non-linear-transformation"));
 const transformDataToNonLinearList = require("non-linear-transformation").transformDataToNonLinearList;
 const debug = true;
 
