@@ -1,0 +1,24 @@
+{
+  "name": "non-linear-transformation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amir-qayyum-khan/non-linear-transformation-npm-package.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amir-qayyum-khan/non-linear-transformation-npm-package/issues"
+  },
+  "homepage": "https://github.com/amir-qayyum-khan/non-linear-transformation-npm-package#readme",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "set-clustering": "^1.1.0"
+  }
+}
