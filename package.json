@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/amir-qayyum-khan/non-linear-transformation-npm-package.git"
   },
-  "keywords": ["nonlinear", "data transformation", "numeric data", "graph axis", "clusting", "problem solving", "js", "javascript"],
+  "keywords": ["nonlinear", "data transformation", "numeric data", "graph axis", "clusting", "problem solving", "js", "javascript", "random data"],
   "author": "Amir Qayyum Khan",
   "license": "ISC",
   "bugs": {
