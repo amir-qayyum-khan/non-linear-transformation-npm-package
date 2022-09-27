@@ -15,6 +15,23 @@ Give an array of arbitrary elements, and a function to determine how similar two
 The elements can then be divided into a number of groups to your liking.
 The elements in each group will be more similar to each other than to elements of other groups.
 
+**Code:**
+
+```javascript
+/**
+ * @param list: list of numbers
+ * @param forceInsertZero: if true the code will add 0 in return axis
+ * @param lengthRequireForOutput: optional min number of element you want in response
+ */
+module.exports.transformDataToNonLinearList = function(
+  list = [],
+  forceInsertZero = false,
+  lengthRequireForOutput = null
+) {
+  // code is in git 
+}
+```
+
 **DRY Run:**
 See script.js file to precomputed sample output and a sample run function.
 
