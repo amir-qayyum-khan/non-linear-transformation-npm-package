@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const threshold = 500;
-const thresholdOutBoundAxisValue = 5;
+const thresholdOutBoundAxisValue = 50;
 
 
 const randomInteger = (min, max) => {
@@ -40,7 +40,10 @@ const genNumbersToFillDataGap = (min, max, list) => {
       i++;
     }
 
-    return _.uniq(points);
+    points = _.uniq([...points, ...list]);
+    points.sort((x, y) => x - y);
+
+    return points;
   }
 
   return list;
@@ -98,17 +101,14 @@ const getHowManyDataGroupsExpected = (lengthRequireForOutput, forceInsertZero = 
 const createDataGroups = (data, howManyGroups) => {
   const cluster = require('set-clustering');
   let groups;
-  const c = cluster(
-    data,
-    function quadraticDropOff(e1, e2) {
-      return 1 / Math.pow(e1 - e2, 2);
-    }
-  );
+  const c = cluster(data, (e1, e2) => 1 / Math.pow( Math.max(e1, e2) - Math.min(e1, e2), 3));
 
-  if (data && data.length > howManyGroups) {
-    groups = c.evenGroups(howManyGroups);
+  if (data && data.length > (howManyGroups * 2)) {
+    groups = c.groups(howManyGroups * 2);
+  } else if (data && data.length > howManyGroups) {
+    groups = c.groups(howManyGroups);
   } else if (data && data.length > 1) {
-    groups = c.evenGroups(data.length - 1);
+    groups = c.groups(data.length - 1);
   } else {
     groups = [[data]];
   }
@@ -122,24 +122,23 @@ const createDataGroups = (data, howManyGroups) => {
  * @returns {*[]}: flat list of numbers
  */
 const getNonLinearResultsFromGroups = (groups) => {
-  let nonLinearResults = [], i = 0;
+  const avgDiff = [];
+  const list = groups.map((list) => {
+    list.sort((a, b) => a - b);
 
-  for (let list of groups) {
-    if (i === 0 && list && list.length > 0) {
-      nonLinearResults.push(list[0]);
+    return list[list.length - 1];
+  });
 
-      if (list.length > 1) {
-        nonLinearResults.push(list[list.length - 1]);
-      }
+  list.sort((a, b) => a - b);
 
-    } else {
-      nonLinearResults.push(list[list.length - 1]);
-    }
-
-    i++;
+  for (let i = 1; i < list.length; i++) {
+    avgDiff.push(list[i] - list[i - 1]);
   }
 
-  return nonLinearResults;
+  const average = _.sum(avgDiff) / avgDiff.length;
+
+
+  return list.filter(e => e > average);
 };
 
 /**
