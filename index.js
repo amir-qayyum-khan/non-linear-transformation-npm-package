@@ -168,15 +168,16 @@ module.exports.transformDataToNonLinearList = function(
   data = genNumbersToFillDataGap(min, max, data);
   groups = createDataGroups(data, howManyGroups);
   nonLinearResults = getNonLinearResultsFromGroups(groups);
+  nonLinearResults = _.uniq(nonLinearResults);
   nonLinearResults.sort((x, y) => x - y);
 
-  if (howManyGroups && nonLinearResults.length > (howManyGroups - 2)) {
-    nonLinearResults = _.slice(nonLinearResults, 0, howManyGroups - 2);
+  if (howManyGroups && nonLinearResults.length > howManyGroups) {
+    nonLinearResults = _.slice(nonLinearResults, 0, howManyGroups);
   }
 
   nonLinearResults = [minBoundValue, ...nonLinearResults, maxBoundValue];
 
-  // make sure zero is available in list. This is for computing on linear axis for graphs
+    // make sure zero is available in list. This is for computing on linear axis for graphs
   if (forceInsertZero) {
     nonLinearResults.push(0);
   }
