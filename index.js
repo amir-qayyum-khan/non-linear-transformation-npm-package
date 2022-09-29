@@ -70,7 +70,7 @@ const getHowManyDataGroupsExpected = (lengthRequireForOutput, forceInsertZero = 
 
     howManyGroups = howManyGroups - 2;
   } else {
-    if (hasNegNum > -1) {
+    if (hasNegNum) {
       howManyGroups = 7
     } else {
       howManyGroups = 5
@@ -137,7 +137,6 @@ const getNonLinearResultsFromGroups = (groups) => {
 
   const average = _.sum(avgDiff) / avgDiff.length;
 
-
   return list.filter(e => e > average);
 };
 
@@ -169,6 +168,12 @@ module.exports.transformDataToNonLinearList = function(
   data = genNumbersToFillDataGap(min, max, data);
   groups = createDataGroups(data, howManyGroups);
   nonLinearResults = getNonLinearResultsFromGroups(groups);
+  nonLinearResults.sort((x, y) => x - y);
+
+  if (lengthRequireForOutput && nonLinearResults.length > (lengthRequireForOutput - 2)) {
+    nonLinearResults = _.slice(nonLinearResults, 0, lengthRequireForOutput - 2);
+  }
+
   nonLinearResults = [minBoundValue, ...nonLinearResults, maxBoundValue];
 
   // make sure zero is available in list. This is for computing on linear axis for graphs
