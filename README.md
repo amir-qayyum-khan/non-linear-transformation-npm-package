@@ -77,6 +77,6 @@ When flag forceInsertZero is set to true and lengthRequireForOutput is set to 6
 
 Input: `[{x: -1, y: 10}, {x: -11, y: 15},{x: -5, y: 17}, {x: 7, y: 25},{x: 15, y: 11}, {x: -100, y: 18},{x: 20, y: 50}, {x: 50, y: 50}]`
 
-output X-axis: `[-150,0,39,100]`
+output X-axis: `[-150,0,42,50,100]`
 
-output Y-axis: `[-40,0,11,100]`
+output Y-axis: `[-40,0,13,18,20,100]`
