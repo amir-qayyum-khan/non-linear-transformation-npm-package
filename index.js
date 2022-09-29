@@ -170,8 +170,8 @@ module.exports.transformDataToNonLinearList = function(
   nonLinearResults = getNonLinearResultsFromGroups(groups);
   nonLinearResults.sort((x, y) => x - y);
 
-  if (lengthRequireForOutput && nonLinearResults.length > (lengthRequireForOutput - 2)) {
-    nonLinearResults = _.slice(nonLinearResults, 0, lengthRequireForOutput - 2);
+  if (howManyGroups && nonLinearResults.length > (howManyGroups - 2)) {
+    nonLinearResults = _.slice(nonLinearResults, 0, howManyGroups - 2);
   }
 
   nonLinearResults = [minBoundValue, ...nonLinearResults, maxBoundValue];
